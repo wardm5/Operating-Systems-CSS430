@@ -1,0 +1,48 @@
+
+*******  README for CSS430: Misha Ward  *******
+
+To run programs, place into specified folders (for Java, place into ThreadOS):
+  Java:
+      1) from terminal, use command: java Boot
+      2) type in l Shell
+      3) run commands as found in the homework
+  C++:
+      1) type command: g++ main.cpp
+      2) type command: ./a.out [argument]
+
+Explanation of Algorithms:
+  Java:
+      1) Run boot java file provided to us.
+      2) Enter "l Shell"
+      3) Program starts, prints the shell prompts
+      4) User input is provided and turned into an array of Strings based on if the user broke commands using ';'
+      5) The commands are then sent through a helper method (runCommands):
+          5a) The helper method immediately splits the command String into an array of strings based on '&'
+          5b) For each of the split strings, you create a new thread to run the process
+          5c) Save the thread ID into set
+          5d) While the set is not empty, set the id to the thread ID and stops that thread (SysLib.join) process
+          5e) If the set contains the thread id, remove the thread id
+      6) Finish program by telling user goodbye and exit.
+
+  C++:
+      1) Start with setting up a process id, file destinations, read and write variables.
+      2) Check if the appropriate amount of variables were provided by the user
+      3) Create pipes for information to channel to and from
+      4) create first child processes
+      5) create another child process (grandchild)
+      6) create another child process (great-grandchild)
+      7) if the great-grandchild's pid is 0:
+          7a) then close pipe 2's read and write
+          7b) close pipe 1's read
+          7c) open for writing pipe 1
+      8) if the grandchild's pid is 0:
+          8a) then close pipe 1's write
+          8b) open reading for pipe 1
+          8c) close read for pipe 2
+          8d) open write for pipe 2
+      9) finally:
+          9a) close the reading and writing for pipe 1
+          9b) close the writing for pipe 2
+          9c) open the reading for pipe 2
+      10) Close all functions for both pipes
+      11) Finish program
