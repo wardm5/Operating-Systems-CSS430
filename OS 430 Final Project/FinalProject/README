@@ -1,0 +1,13 @@
+To run:
+1.  Open zip
+2.  Place all files into Thread OS Folder
+3.  Run command in Terminal:
+javac Directory.java FileSystem.java FileTable.java FileTableEntry.java Inode.java Scheduler.java SuperBlock.java TCB.java Kernel.java SysLib.java
+
+4.  Run command in Terminal:
+java Boot
+
+5.  Type in:
+l Test5
+
+6. Review results.
